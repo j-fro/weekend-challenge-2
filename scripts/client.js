@@ -52,12 +52,16 @@ function prevClicked() {
 /* --- DISPLAY FUNCTIONS --- */
 
 function displayStudentInfo(student) {
-    /* Displays a single student's information on the DOM */
+    /* Displays a single student's information on the DOM and updates position
+    indicator */
     var $container = $('#studentDisplay');
     var htmlString = '<h2>' + student.first_name + ' ' + student.last_name + '</h2>';
     htmlString += '<img class="portrait" src="' + student.picUrl + '" />';
     htmlString += '<p>' + student.info + '</p>';
     $container.html(htmlString);
+
+    var $position = $('#positionIndicator');
+    $position.html(currentIndex + 1 + '/' + studentsArray.length);
 }
 
 /* --- UTILITY FUNCTIONS --- */
