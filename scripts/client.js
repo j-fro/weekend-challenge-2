@@ -8,11 +8,6 @@ var ARRAY_PROPERTY = 'tau'; // Name of the property that contains the desired ar
 
 $(document).ready(function() {
     getStudentInfo(STUDENTS_URL);
-    setInterval(function() {
-      currentIndex = (currentIndex += 1) % studentsArray.length;
-      console.log(currentIndex);
-      displayStudentInfo(studentsArray[currentIndex], currentIndex);
-    }, 5000);
 });
 
 function getStudentInfo(url) {
