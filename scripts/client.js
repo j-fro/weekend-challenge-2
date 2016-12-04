@@ -15,7 +15,7 @@ function enableButtons() {
     /* Wires up all buttons to their click handlers */
     $(document).on('click', '#nextButton', nextClicked);
     $(document).on('click', '#prevButton', prevClicked);
-    $(document).on('click', '.studentButton', studentClicked);
+    $(document).on('click', '.student-button', studentClicked);
 }
 
 function getStudentInfo(url) {
@@ -64,13 +64,15 @@ function displayStudentInfo(student) {
     /* Displays a single student's information on the DOM and updates position
     indicator */
     var $container = $('#studentDisplay');
-    $container.fadeOut();
-    var htmlString = '<h2>' + student.first_name + ' ' + student.last_name + '</h2>';
-    htmlString += '<img class="portrait" src="' + student.picUrl + '" />';
-    htmlString += '<p>' + student.info + '</p>';
-    $container.html(htmlString);
-    $container.fadeIn();
+    $container.fadeOut(function() {
+        var htmlString = '<h2>' + student.first_name + ' ' + student.last_name + '</h2>';
+        htmlString += '<img class="portrait" src="' + student.picUrl + '" />';
+        htmlString += '<p>' + student.info + '</p>';
+        $container.html(htmlString);
+        $container.fadeIn();
+    });
 
+    // Update the position indicator
     var $position = $('#positionIndicator');
     $position.html(currentIndex + 1 + '/' + studentsArray.length);
 }
