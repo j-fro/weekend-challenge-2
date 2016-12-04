@@ -1,6 +1,7 @@
 /* --- GLOBALS --- */
 var studentsArray = [];
 var currentIndex = 0;
+var timerCount = 10;
 
 /* --- CONSTANTS --- */
 var STUDENTS_URL = 'http://devjana.net/support/tau_students.json';
@@ -9,6 +10,14 @@ var ARRAY_PROPERTY = 'tau'; // Name of the property that contains the desired ar
 $(document).ready(function() {
     getStudentInfo(STUDENTS_URL);
     enableButtons();
+    setInterval(function() {
+        timerCount--;
+        console.log(timerCount);
+        if (timerCount <= 0) {
+            console.log("Hit the zeroes!");
+            nextClicked();
+        }
+    }, 1000);
 });
 
 function enableButtons() {
@@ -42,17 +51,19 @@ function parseStudentInfo(data) {
 /* --- CLICK HANDLERS --- */
 
 function nextClicked() {
+    timerCount = 10;
     incrementIndex();
     displayStudentInfo(studentsArray[currentIndex]);
 }
 
 function prevClicked() {
+    timerCount = 10;
     decrementIndex();
     displayStudentInfo(studentsArray[currentIndex]);
 }
 
 function studentClicked() {
-    console.log($(this).data());
+    timerCount = 10;
     var index = $(this).data().index;
     currentIndex = index;
     displayStudentInfo(studentsArray[currentIndex]);
@@ -79,14 +90,18 @@ function displayStudentInfo(student) {
 
 function displayStudentButtons(array) {
     /* Displays a button for each student between the prev and next buttons */
+    var htmlString = '<button type="button" id="prevButton" class="btn btn-primary glyphicon glyphicon-menu-left"></button>';
+    $container = $('#buttonBar');
     array.forEach(function(student, index) {
-        // var $container = $('#studentButtons');
-        var $nextButton = $('#nextButton');
-        var htmlString = '<button class="student-button" data-index="' + index + '">';
+        if (student.first_name === 'Jacob') {
+            htmlString += '<button class="btn btn-danger student-button" data-index="' + index + '">';
+        } else {
+            htmlString += '<button class="btn student-button" data-index="' + index + '">';
+        }
         htmlString += '<img src=' + student.picUrl + ' /></button>';
-        $nextButton.before(htmlString);
-        // $container.append(htmlString);
     });
+    htmlString += '<button type="button" id="nextButton" class="btn btn-primary glyphicon glyphicon-menu-right"></button>';
+    $container.html(htmlString);
 }
 
 /* --- UTILITY FUNCTIONS --- */

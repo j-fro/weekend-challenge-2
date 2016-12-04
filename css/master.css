@@ -1,40 +1,56 @@
 body {
-  background-color: #2e2759 !important;
-  color: white;
+    background-color: #2e2759 !important;
+    color: white;
+}
+
+strong {
+    font-size: 64px;
 }
 
 main, #studentCarousel {
-  background-color: #2e2759;
-  color: oldlace;
-  display: inline-block;
-  margin: auto;
-  text-align: center;
+    background-color: #2e2759;
+    color: oldlace;
+    display: inline-block;
+    margin: auto;
+    text-align: center;
 }
 
 #studentCarousel p {
-  padding: 15px 0 15px 0;
+    padding: 15px 0 15px 0;
+}
+
+#studentDisplay {
+  border: 1px solid oldlace;
+  background-color: #483d8b;
+  width: 500px;
+  margin: auto;
 }
 
 .portrait {
-  height: 300px;
-  border: 1px solid oldlace;
-  padding: 15px;
-  background-color: #483d8b;
+    height: 300px;
+    padding: 15px;
+}
+
+#buttonBar {
+    vertical-align: top;
 }
 
 button {
-  width: 50px;
-  height: 50px;
+    width: 50px;
+    height: 50px;
+    padding: 0 !important;
+    margin: 5px !important;
+    vertical-align: top;
 }
 
 .student-button img {
-  height: inherit;
-  width: inherit;
-  padding: 5px;
+    border: 1px solid #2e2759;
+    width: 45px;
+    overflow: hidden;
 }
 
 .glyphicon {
-  height: 50px;
-  width: 50px;
-  color: #2e2759;
+    height: 50px;
+    width: 50px;
+    color: #2e2759;
 }
