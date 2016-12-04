@@ -1,5 +1,6 @@
 /* --- GLOBALS --- */
 var studentsArray = [];
+var currentIndex = 0;
 
 /* --- CONSTANTS --- */
 var STUDENTS_URL = 'http://devjana.net/support/tau_students.json';
@@ -7,6 +8,11 @@ var ARRAY_PROPERTY = 'tau'; // Name of the property that contains the desired ar
 
 $(document).ready(function() {
     getStudentInfo(STUDENTS_URL);
+    setInterval(function() {
+      currentIndex = (currentIndex += 1) % studentsArray.length;
+      console.log(currentIndex);
+      displayStudentInfo(studentsArray[currentIndex], currentIndex);
+    }, 5000);
 });
 
 function getStudentInfo(url) {
@@ -25,7 +31,8 @@ function parseStudentInfo(data) {
         studentsArray.push(student);
     });
     console.log(studentsArray);
-    displayStudentInfo(studentsArray[0], 0);
+    // Immediately display the first student
+    displayStudentInfo(studentsArray[currentIndex], currentIndex);
 }
 
 /* --- DISPLAY FUNCTIONS --- */
@@ -34,7 +41,7 @@ function displayStudentInfo(student, index) {
     var $container = $('#studentDisplay');
     $container.data('index', index);
     var htmlString = '<h2>' + student.first_name + ' ' + student.last_name + '</h2>';
-    htmlString += '<img src="' + student.picUrl + '" />';
+    htmlString += '<img class="portrait" src="' + student.picUrl + '" />';
     htmlString += '<p>' + student.info + '</p>';
     $container.html(htmlString);
 }

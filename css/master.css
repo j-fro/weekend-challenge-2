@@ -1,0 +1,23 @@
+body {
+  background-color: #2e2759;
+  color: oldlace;
+}
+
+main, #studentCarousel {
+  background-color: #2e2759;
+  color: oldlace;
+  display: inline-block;
+  margin: auto;
+  text-align: center;
+}
+
+.portrait {
+  height: 300px;
+  border: 1px solid black;
+}
+
+.glyphicon {
+  height: 50px;
+  width: 50px;
+  color: #2e2759;
+}
