@@ -1,6 +1,6 @@
 body {
-  background-color: #2e2759;
-  color: oldlace;
+  background-color: #2e2759 !important;
+  color: white;
 }
 
 main, #studentCarousel {
@@ -11,9 +11,15 @@ main, #studentCarousel {
   text-align: center;
 }
 
+#studentCarousel p {
+  padding: 15px 0 15px 0;
+}
+
 .portrait {
   height: 300px;
-  border: 1px solid black;
+  border: 1px solid oldlace;
+  padding: 15px;
+  background-color: #483d8b;
 }
 
 .glyphicon {

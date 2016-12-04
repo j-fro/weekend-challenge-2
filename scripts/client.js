@@ -8,7 +8,14 @@ var ARRAY_PROPERTY = 'tau'; // Name of the property that contains the desired ar
 
 $(document).ready(function() {
     getStudentInfo(STUDENTS_URL);
+    enableButtons();
 });
+
+function enableButtons() {
+    /* Wires up all buttons to their click handlers */
+    $(document).on('click', '#nextButton', nextClicked);
+    $(document).on('click', '#prevButton', prevClicked);
+}
 
 function getStudentInfo(url) {
     /* Makes an AJAX call on the API endpoint and parses the returned data */
@@ -27,16 +34,41 @@ function parseStudentInfo(data) {
     });
     console.log(studentsArray);
     // Immediately display the first student
-    displayStudentInfo(studentsArray[currentIndex], currentIndex);
+    displayStudentInfo(studentsArray[currentIndex]);
+}
+
+/* --- CLICK HANDLERS --- */
+
+function nextClicked() {
+    incrementIndex();
+    displayStudentInfo(studentsArray[currentIndex]);
+}
+
+function prevClicked() {
+    decrementIndex();
+    displayStudentInfo(studentsArray[currentIndex]);
 }
 
 /* --- DISPLAY FUNCTIONS --- */
-function displayStudentInfo(student, index) {
+
+function displayStudentInfo(student) {
     /* Displays a single student's information on the DOM */
     var $container = $('#studentDisplay');
-    $container.data('index', index);
     var htmlString = '<h2>' + student.first_name + ' ' + student.last_name + '</h2>';
     htmlString += '<img class="portrait" src="' + student.picUrl + '" />';
     htmlString += '<p>' + student.info + '</p>';
     $container.html(htmlString);
+}
+
+/* --- UTILITY FUNCTIONS --- */
+
+function incrementIndex() {
+    currentIndex = (currentIndex + 1) % studentsArray.length;
+}
+
+function decrementIndex() {
+    currentIndex--;
+    if (currentIndex < 0) {
+        currentIndex = studentsArray.length - 1;
+    }
 }
