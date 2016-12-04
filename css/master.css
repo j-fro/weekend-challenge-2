@@ -22,12 +22,12 @@ main, #studentCarousel {
   background-color: #483d8b;
 }
 
-.studentButton {
+button {
   width: 50px;
   height: 50px;
 }
 
-.studentButton img {
+.student-button img {
   height: inherit;
   width: inherit;
   padding: 5px;

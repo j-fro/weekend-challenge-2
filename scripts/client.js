@@ -78,8 +78,12 @@ function displayStudentInfo(student) {
 function displayStudentButtons(array) {
     /* Displays a button for each student between the prev and next buttons */
     array.forEach(function(student, index) {
-        var $container = $('#studentButtons');
-        $container.append('<button class="studentButton" data-index="' + index + '"><img src=' + student.picUrl + ' /></button>');
+        // var $container = $('#studentButtons');
+        var $nextButton = $('#nextButton');
+        var htmlString = '<button class="student-button" data-index="' + index + '">';
+        htmlString += '<img src=' + student.picUrl + ' /></button>';
+        $nextButton.before(htmlString);
+        // $container.append(htmlString);
     });
 }
 
