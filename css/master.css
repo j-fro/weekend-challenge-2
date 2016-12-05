@@ -23,6 +23,7 @@ main, #studentCarousel {
   border: 1px solid oldlace;
   background-color: #483d8b;
   width: 500px;
+  height: 450px;
   margin: 0 auto 30px auto;
 }
 
@@ -62,4 +63,8 @@ button {
 
 .selected img {
   width: 70px;
+}
+
+#studentCarousel .danger-zone {
+  background-color: #d9534f;
 }

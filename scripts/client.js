@@ -84,6 +84,11 @@ function displayStudentInfo(student) {
         htmlString += '<img class="portrait" src="' + student.picUrl + '" />';
         htmlString += '<p>' + student.info + '</p>';
         $container.html(htmlString);
+        if (student.first_name === 'Jacob') {
+          $container.addClass('danger-zone');
+        } else {
+          $container.removeClass('danger-zone');
+        }
         $container.fadeIn();
     });
 
