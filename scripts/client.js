@@ -54,19 +54,21 @@ function nextClicked() {
     timerCount = 10;
     incrementIndex();
     displayStudentInfo(studentsArray[currentIndex]);
+    highlightButton(currentIndex);
 }
 
 function prevClicked() {
     timerCount = 10;
     decrementIndex();
     displayStudentInfo(studentsArray[currentIndex]);
+    highlightButton(currentIndex);
 }
 
 function studentClicked() {
     timerCount = 10;
-    var index = $(this).data().index;
-    currentIndex = index;
+    currentIndex = $(this).data().index;
     displayStudentInfo(studentsArray[currentIndex]);
+    highlightButton(currentIndex);
 }
 
 /* --- DISPLAY FUNCTIONS --- */
@@ -102,6 +104,13 @@ function displayStudentButtons(array) {
     });
     htmlString += '<button type="button" id="nextButton" class="btn btn-primary glyphicon glyphicon-menu-right"></button>';
     $container.html(htmlString);
+}
+
+function highlightButton(index) {
+    // Clear the highlight on all buttons
+    $('.student-button').removeClass('btn-primary');
+    // Highlight the button at the current index
+    $('#buttonBar').find($('.student-button')[index]).addClass('btn-primary');
 }
 
 /* --- UTILITY FUNCTIONS --- */
