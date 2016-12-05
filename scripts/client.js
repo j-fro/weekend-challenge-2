@@ -46,6 +46,8 @@ function parseStudentInfo(data) {
     displayStudentInfo(studentsArray[currentIndex]);
     // Add buttons for each student to the DOM
     displayStudentButtons(studentsArray);
+    // Highlight the first student button
+    highlightButton(currentIndex);
 }
 
 /* --- CLICK HANDLERS --- */
@@ -108,9 +110,9 @@ function displayStudentButtons(array) {
 
 function highlightButton(index) {
     // Clear the highlight on all buttons
-    $('.student-button').removeClass('btn-primary');
+    $('.student-button').removeClass('btn-primary selected');
     // Highlight the button at the current index
-    $('#buttonBar').find($('.student-button')[index]).addClass('btn-primary');
+    $('#buttonBar').find($('.student-button')[index]).addClass('btn-primary selected');
 }
 
 /* --- UTILITY FUNCTIONS --- */
