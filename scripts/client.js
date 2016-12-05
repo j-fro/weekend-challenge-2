@@ -11,10 +11,10 @@ $(document).ready(function() {
     getStudentInfo(STUDENTS_URL);
     enableButtons();
     setInterval(function() {
+        // Reduce the timer every second
         timerCount--;
-        console.log(timerCount);
         if (timerCount <= 0) {
-            console.log("Hit the zeroes!");
+            // Advance to the next student once the timer hits zero
             nextClicked();
         }
     }, 1000);
@@ -85,9 +85,9 @@ function displayStudentInfo(student) {
         htmlString += '<p>' + student.info + '</p>';
         $container.html(htmlString);
         if (student.first_name === 'Jacob') {
-          $container.addClass('danger-zone');
+            $container.addClass('danger-zone');
         } else {
-          $container.removeClass('danger-zone');
+            $container.removeClass('danger-zone');
         }
         $container.fadeIn();
     });
@@ -99,8 +99,10 @@ function displayStudentInfo(student) {
 
 function displayStudentButtons(array) {
     /* Displays a button for each student between the prev and next buttons */
+    // Add the previous button before the student buttons
     var htmlString = '<button type="button" id="prevButton" class="btn btn-primary glyphicon glyphicon-menu-left"></button>';
     $container = $('#buttonBar');
+    // Iterate through the students and create a button for each
     array.forEach(function(student, index) {
         if (student.first_name === 'Jacob') { //Flex-fro is the danger button
             htmlString += '<button class="btn btn-danger student-button" data-index="' + index + '">';
@@ -109,6 +111,7 @@ function displayStudentButtons(array) {
         }
         htmlString += '<img src=' + student.picUrl + ' /></button>';
     });
+    // Add the next button after the student buttons
     htmlString += '<button type="button" id="nextButton" class="btn btn-primary glyphicon glyphicon-menu-right"></button>';
     $container.html(htmlString);
 }
