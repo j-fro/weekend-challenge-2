@@ -93,7 +93,7 @@ function displayStudentButtons(array) {
     var htmlString = '<button type="button" id="prevButton" class="btn btn-primary glyphicon glyphicon-menu-left"></button>';
     $container = $('#buttonBar');
     array.forEach(function(student, index) {
-        if (student.first_name === 'Jacob') {
+        if (student.first_name === 'Jacob') { //Flex-fro is the danger button
             htmlString += '<button class="btn btn-danger student-button" data-index="' + index + '">';
         } else {
             htmlString += '<button class="btn student-button" data-index="' + index + '">';
